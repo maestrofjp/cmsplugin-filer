@@ -30,7 +30,7 @@ class FilerLinkPlugin(CMSPluginBase):
         context.update({
             'link': link,
             'style': instance.link_style,
-            'name': escape(instance.name),
+            'name': instance.name,
             'new_window': instance.new_window,
         })
         return context
