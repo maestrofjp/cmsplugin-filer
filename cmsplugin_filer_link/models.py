@@ -29,7 +29,7 @@ class FilerLinkPlugin(CMSPlugin):
     file = FilerFileField(blank=True, null=True)
     
     def save(self, *args, **kwargs):
-        self.name = escape(body)
+        self.name = escape(self.name)
         super(FilerLinkPlugin, self).save(*args, **kwargs)
 
     def __str__(self):
