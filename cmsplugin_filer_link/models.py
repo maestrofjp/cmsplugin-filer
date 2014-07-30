@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from cms.models import CMSPlugin, Page
@@ -26,7 +27,10 @@ class FilerLinkPlugin(CMSPlugin):
     new_window = models.BooleanField(_("new window?"), default=False,
                 help_text=_("Do you want this link to open a new window?"))
     file = FilerFileField(blank=True, null=True)
-
+    
+    def save(self, *args, **kwargs):
+        self.name = escape(body)
+        super(FilerLinkPlugin, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
